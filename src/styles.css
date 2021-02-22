@@ -1,0 +1,50 @@
+body {
+  margin: 100px auto;
+  font-family: "monospace";
+  color: antiquewhite;
+}
+
+li {
+  list-style: none;
+}
+a {
+  color: antiquewhite;
+}
+h2 {
+  display: inline-block;
+}
+span {
+  position: relative;
+  top: -10px;
+}
+.container {
+  background-image: linear-gradient(
+    to top,
+    #4fb576 0%,
+    #44c489 30%,
+    #28a9ae 46%,
+    #28a2b7 59%,
+    #4c7788 71%,
+    #6c4f63 86%,
+    #432c39 100%
+  );
+  width: 750px;
+  margin: 30px auto;
+  padding: 40px;
+  border-radius: 10px;
+}
+.card {
+  color: black;
+  margin: auto;
+}
+.card-text {
+  text-align: center;
+}
+.firstCity {
+  margin-top: 0;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+.dayCard {
+  margin: 1px;
+}
