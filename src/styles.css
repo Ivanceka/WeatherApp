@@ -17,6 +17,11 @@ span {
   position: relative;
   top: -10px;
 }
+small {
+  display: block;
+  font-size: 90%;
+  color: black;
+}
 .container {
   background-image: linear-gradient(
     to top,
@@ -29,7 +34,7 @@ span {
     #432c39 100%
   );
   width: 750px;
-  margin: 30px auto;
+  margin: 30px auto 0;
   padding: 40px;
   border-radius: 10px;
 }
@@ -47,4 +52,14 @@ span {
 }
 .dayCard {
   margin: 1px;
+}
+#linkGitHub {
+  color: blue;
+}
+.link {
+  background-image: none;
+  width: 750px;
+  margin: auto;
+  padding: 0px;
+  border-radius: 10px;
 }
