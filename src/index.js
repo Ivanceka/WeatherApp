@@ -1,142 +1,67 @@
+function formatDate(timestamp) {
+  let now = new Date();
+  let date = now.getDate();
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+  ];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let month = months[now.getMonth()];
+  let year = now.getFullYear();
+  return `${day}, ${month} ${date}, ${year}`;
+}
+function formatTime(timestamp) {
+  let date = new Date(timestamp);
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  return `Time: ${hours}:${minutes}`;
+}
+
 function showTemperature(response) {
-  console.log(response.data.main.temp);
   let temperatureElement = document.querySelector("h2");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
   let windElement = document.querySelector("#wind");
-  windElement.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   let precipitationElement = document.querySelector("#precipitation");
+  let pressureElement = document.querySelector("#pressure");
+  let convertPressure = Math.round(response.data.main.pressure * 0.75);
+  let dataElement = document.querySelector("#time");
+  let timeElement = document.querySelector("#date");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  windElement.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
+  humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   precipitationElement.innerHTML = `${response.data.weather[0].description}`;
-  let pressure = document.querySelector("#pressure");
-  let currentPressure = Math.round(response.data.main.pressure * 0.75);
-  pressure.innerHTML = `Pressure: ${currentPressure} mmHg`;
+  pressureElement.innerHTML = `Pressure: ${convertPressure} mmHg`;
+  dataElement.innerHTML = formatDate(response.data.dt * 1000);
+  timeElement.innerHTML = formatTime(response.data.dt);
 }
 
 let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&units=metric&appid=${apiKey}`;
 
 axios.get(apiUrl).then(showTemperature);
-
-console.log(apiUrl);
-
-// function findCityWeather(event) {
-//   event.preventDefault();
-//   let inputCity = document.querySelector("#searchCity");
-//   let findCity = document.querySelector("#city");
-//   findCity.innerHTML = `${inputCity.value}`;
-// }
-
-// let enterCity = document.querySelector("#searchCity");
-// enterCity.addEventListener("submit", findCityWeather);
-
-// function showFindCityWeather(response) {
-//   let h2 = document.querySelector("h2");
-//   let temperature = Math.round(response.data.main.temp);
-//   h2.innerHTML = `${temperature}`;
-//   let wind = document.querySelector("#wind");
-//   let currentWind = response.data.wind.speed;
-//   wind.innerHTML = `Wind: ${currentWind} km/h`;
-//   let humidity = document.querySelector("#humidity");
-//   let currentHumidity = response.data.main.humidity;
-//   humidity.innerHTML = `Humidity: ${currentHumidity}%`;
-//   let precipitation = document.querySelector("#precipitation");
-//   let currentPrecipitation = response.data.weather[0].description;
-//   precipitation.innerHTML = `${currentPrecipitation}`;
-//   let pressure = document.querySelector("#pressure");
-//   let currentPressure = Math.round(response.data.main.pressure * 0.75);
-//   pressure.innerHTML = `Pressure: ${currentPressure} mmHg`;
-
-//   function changeCelsius(event) {
-//     event.preventDefault();
-//     let currentTemperature = document.querySelector("h2");
-//     currentTemperature.innerHTML = `${temperature}`;
-//   }
-//   let celsius = document.querySelector("#celsius-link");
-//   celsius.addEventListener("click", changeCelsius);
-
-//   function changeFahrenheit(event) {
-//     event.preventDefault();
-//     let currentTemperature = document.querySelector("h2");
-//     currentTemperature.innerHTML = `${temperatureFahrenheit}`;
-//   }
-//   let temperatureFahrenheit = Math.round((temperature * 9) / 5 + 32);
-//   let fahrenheit = document.querySelector("#fahrenheit-link");
-//   fahrenheit.addEventListener("click", changeFahrenheit);
-// }
-
-// function showCurrentWeather(response) {
-//   let h2 = document.querySelector("h2");
-//   let temperature = Math.round(response.data.main.temp);
-//   h2.innerHTML = `${temperature}`;
-//   let h1 = document.querySelector("#city");
-//   let city = response.data.name;
-//   h1.innerHTML = `${city}`;
-//   let wind = document.querySelector("#wind");
-//   let currentWind = response.data.wind.speed;
-//   wind.innerHTML = `Wind: ${currentWind} km/h`;
-//   let humidity = document.querySelector("#humidity");
-//   let currentHumidity = response.data.main.humidity;
-//   humidity.innerHTML = `Humidity: ${currentHumidity}%`;
-//   let precipitation = document.querySelector("#precipitation");
-//   let currentPrecipitation = response.data.weather[0].description;
-//   precipitation.innerHTML = `${currentPrecipitation}`;
-//   let pressure = document.querySelector("#pressure");
-//   let currentPressure = Math.round(response.data.main.pressure * 0.75);
-//   pressure.innerHTML = `Pressure: ${currentPressure} mmHg`;
-// }
-
-// function retrievePosition(position) {
-//   let lat = position.coords.latitude;
-//   let lon = position.coords.longitude;
-//   let apiKey = `92bae01c9a19537ef478ef8ad568eb5c`;
-//   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-//   axios.get(url).then(showCurrentWeather);
-// }
-
-// let months = [
-//   "January",
-//   "February",
-//   "March",
-//   "April",
-//   "May",
-//   "June",
-//   "July",
-//   "August",
-//   "September",
-//   "October",
-//   "November",
-// ];
-// let days = [
-//   "Sunday",
-//   "Monday",
-//   "Tuesday",
-//   "Wednesday",
-//   "Thursday",
-//   "Friday",
-//   "Saturday",
-// ];
-
-// let now = new Date();
-// let date = now.getDate();
-// let day = days[now.getDay()];
-// let year = now.getFullYear();
-// let month = months[now.getMonth()];
-// let currentDate = document.querySelector("#date");
-// currentDate.innerHTML = `${day}, ${month} ${date}, ${year}`;
-
-// function formatTime(date) {
-//   let hours = date.getHours();
-//   if (hours < 10) {
-//     hours = `0${hours}`;
-//   }
-//   let minutes = date.getMinutes();
-//   if (minutes < 10) {
-//     minutes = `0${minutes}`;
-//   }
-//   return `Time: ${hours}:${minutes}`;
-// }
-// let currentTime = document.querySelector("#time");
-// currentTime.innerHTML = formatTime(now);
-
-// navigator.geolocation.getCurrentPosition(retrievePosition);
