@@ -16,117 +16,116 @@
 
   <body>
     <div class="container">
+      <input
+        id="searchCity"
+        placeholder="Enter a city"
+        autocomplete="off"
+        autofocus="on"
+      />
+      <button type="submit">🔍</button>
+      <button type="currentCity">Current city</button>
+
+      <h1 id="city">New York</h1>
       <div class="row">
         <div class="col-6">
-          <ul class="firstCity">
-            <li>
-              <h1 id="city">New-York</h1>
-            </li>
-            <li>
-              <h2>25</h2>
-              <span><a href="#" id="celsius-link"> °C |</a></span>
-              <span><a href="#" id="fahrenheit-link"> °F</a></span>
-            </li>
-          </ul>
+         <h2> 25 </h2>
+         <span><a href="#" id="celsius-link"> °C |</a></span>
+         <span><a href="#" id="fahrenheit-link"> °F</a></span>
+         <ul class="currentTime">
+          <li id="date">Friday</li>
+          <li id="time">12:00</li>
+         </ul>
         </div>
-        <form class="col-6" id="enterCitySearch">
-          <input
-            class="col-9"
-            id="searchCity"
-            placeholder="Enter a city"
-            autocomplete="off"
-            autofocus="on"
+        <div class="col-6">
+        <ul class="probabilityPrecipitation">
+          <li id="precipitation"> Description</li>
+          <li id="humidity">Humidity:</li>
+          <li id="wind">Wind:</li>
+          <li id="pressure">Pressure:</li>
+        </ul>
+       </div>
+      </div>
+      <div class="row dayCard">
+        <div class="card" style="width: 8rem">
+          <img
+            src="Images/undraw_Raining_re_4b55.svg"
+            class="card-img-top"
+            alt="rain"
           />
-          <button type="submit">🔍</button>
-        </form>
-        <div class="row">
-          <div class="col-6">
-            <ul class="currentTime">
-              <li id="date">Sunday, January 17, 2021</li>
-              <li id="time">Time 9:53 pm</li>
-              <li id="precipitation">Cloudy</li>
-            </ul>
-          </div>
-          <div class="col-6">
-            <ul class="probabilityPrecipitation">
-              <li id="humidity">Humidity: 79%</li>
-              <li id="wind">Wind: 3 km/h</li>
-              <li id="pressure">Pressure: 761 mmHg</li>
-            </ul>
+          <div class="card-body">
+            <p class="card-text nextDateToday">
+              Today
+              <br />
+              18°C
+            </p>
           </div>
         </div>
-        <div class="row dayCard">
-          <div class="card" style="width: 8rem">
-            <img
-              src="Images/undraw_Raining_re_4b55.svg"
-              class="card-img-top"
-              alt="rain"
-            />
-            <div class="card-body">
-              <p class="card-text nextDateToday">
-                Today
-                <br />
-                18°C
-              </p>
-            </div>
-          </div>
-          <div class="card" style="width: 8rem">
-            <img
-              src="Images/undraw_Raining_re_4b55.svg"
-              class="card-img-top"
-              alt="rain"
-            />
-            <div class="card-body">
-              <p class="card-text nextDate">
-                Tomorrow
-                <br />
-                18°C
-              </p>
-            </div>
-          </div>
-          <div class="card" style="width: 8rem">
-            <img
-              src="Images/undraw_Raining_re_4b55.svg"
-              class="card-img-top"
-              alt="rain"
-            />
-            <div class="card-body">
-              <p class="card-text nextDate">
-                Friday
-                <br />
-                18°C
-              </p>
-            </div>
-          </div>
-          <div class="card" style="width: 8rem">
-            <img
-              src="Images/undraw_Raining_re_4b55.svg"
-              class="card-img-top"
-              alt="rain"
-            />
-            <div class="card-body">
-              <p class="card-text nextDate">
-                Saturday
-                <br />
-                18°C
-              </p>
-            </div>
-          </div>
-          <div class="card" style="width: 8rem">
-            <img
-              src="Images/undraw_Raining_re_4b55.svg"
-              class="card-img-top"
-              alt="rain"
-            />
-            <div class="card-body">
-              <p class="card-text nextDate">
-                Sunday
-                <br />
-                18°C
-              </p>
-            </div>
+        <div class="card" style="width: 8rem">
+          <img
+            src="Images/undraw_Raining_re_4b55.svg"
+            class="card-img-top"
+            alt="rain"
+          />
+          <div class="card-body">
+            <p class="card-text nextDate">
+              Tomorrow
+              <br />
+              18°C
+            </p>
           </div>
         </div>
+        <div class="card" style="width: 8rem">
+          <img
+            src="Images/undraw_Raining_re_4b55.svg"
+            class="card-img-top"
+            alt="rain"
+          />
+          <div class="card-body">
+            <p class="card-text nextDate">
+              Friday
+              <br />
+              18°C
+            </p>
+          </div>
+        </div>
+        <div class="card" style="width: 8rem">
+          <img
+            src="Images/undraw_Raining_re_4b55.svg"
+            class="card-img-top"
+            alt="rain"
+          />
+          <div class="card-body">
+            <p class="card-text nextDate">
+              Saturday
+              <br />
+              18°C
+            </p>
+          </div>
+        </div>
+        <div class="card" style="width: 8rem">
+          <img
+            src="Images/undraw_Raining_re_4b55.svg"
+            class="card-img-top"
+            alt="rain"
+          />
+          <div class="card-body">
+            <p class="card-text nextDate">
+              Sunday
+              <br />
+              18°C
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      
+      
+      
+      
+      
       </div>
     </div>
     <div class="container link">
