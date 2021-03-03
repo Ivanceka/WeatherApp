@@ -17,14 +17,17 @@
   <body>
     <div class="container">
       <div class="searchCity">
-        <input
-          class="col-9"
-          placeholder="Enter a city"
-          autocomplete="off"
-          autofocus="on"
-        />
-        <button type="submit">🔍</button>
-        <button type="submit" class="col-2 currentCity">Current city</button>
+        <form id="searchForm">
+          <input
+            class="col-9"
+            id="city-input"
+            placeholder="Enter a city"
+            autocomplete="off"
+            autofocus="on"
+          />
+          <button type="submit">🔍</button>
+          <button type="submit" class="col-2 currentCity">Current city</button>
+        </form>
       </div>
 
       <h1 id="city">New York</h1>
@@ -32,12 +35,12 @@
         <div class="col-6">
           <ul class="currentTime">
             <li>
-              <h2>25</h2>
+              <h2></h2>
               <span><a href="#" id="celsius-link"> °C |</a></span>
               <span><a href="#" id="fahrenheit-link"> °F</a></span>
             </li>
-            <li id="date">Friday</li>
-            <li id="time">12:00</li>
+            <li id="date"></li>
+            <li id="time"></li>
           </ul>
         </div>
         <div class="col-6">

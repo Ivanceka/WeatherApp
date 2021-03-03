@@ -44,6 +44,7 @@ function formatTime(timestamp) {
 }
 
 function showTemperature(response) {
+  let cityElement = document.querySelector("h1");
   let temperatureElement = document.querySelector("h2");
   let windElement = document.querySelector("#wind");
   let humidityElement = document.querySelector("#humidity");
@@ -52,6 +53,7 @@ function showTemperature(response) {
   let convertPressure = Math.round(response.data.main.pressure * 0.75);
   let dataElement = document.querySelector("#time");
   let timeElement = document.querySelector("#date");
+  cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   windElement.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
   humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
@@ -60,8 +62,43 @@ function showTemperature(response) {
   dataElement.innerHTML = formatDate(response.data.dt * 1000);
   timeElement.innerHTML = formatTime(response.data.dt);
 }
+function search(city) {
+  let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(showTemperature);
+}
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
 
-let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&units=metric&appid=${apiKey}`;
+// function displayFahrenheitTemperature(event) {
+//   event.preventDefault();
+//   let temperatureElement = document.querySelector("#temperature");
+//   celsiusLink.classList.remove("active");
+//   fahrenheitLink.classList.add("active");
+//   let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
+//   temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+// }
+// function displayCelsiusTemperature(event) {
+//   event.preventDefault();
+//   celsiusLink.classList.add("active");
+//   fahrenheitLink.classList.remove("active");
+//   let temperatureElement = document.querySelector("#temperature");
+//   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+// }
+// let celsiusTemperature = null;
+let form = document.querySelector("#searchForm");
+form.addEventListener("submit", handleSubmit);
+// let fahrenheitLink = document.querySelector("#fahrenheit-link");
+// fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+// let celsiusLink = document.querySelector("#celsius-link");
+// celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-axios.get(apiUrl).then(showTemperature);
+search("New York");
+
+// let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
+// let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&units=metric&appid=${apiKey}`;
+
+// axios.get(apiUrl).then(showTemperature);
