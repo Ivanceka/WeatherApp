@@ -1,6 +1,5 @@
 function formatDate(timestamp) {
-  let now = new Date();
-  let date = now.getDate();
+  let date = new Date(timestamp);
   let months = [
     "January",
     "February",
@@ -23,27 +22,29 @@ function formatDate(timestamp) {
     "Friday",
     "Saturday",
   ];
-  let day = days[now.getDay()];
-  let month = months[now.getMonth()];
-  let year = now.getFullYear();
-  return `${day}, ${month} ${date}, ${year}`;
+  let day = days[date.getDay()];
+  let month = months[date.getMonth()];
+  let year = date.getFullYear();
+  let dayOfMounth = date.getDate();
+  return `${day}, ${month} ${dayOfMounth}, ${year}`;
 }
 function formatTime(timestamp) {
   let date = new Date(timestamp);
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
+    console.log(timestamp);
   }
 
   let hours = date.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
-
   return `Time: ${hours}:${minutes}`;
 }
 
 function showTemperature(response) {
+  console.log(response);
   let cityElement = document.querySelector("h1");
   let temperatureElement = document.querySelector("h2");
   let windElement = document.querySelector("#wind");
@@ -51,8 +52,10 @@ function showTemperature(response) {
   let precipitationElement = document.querySelector("#precipitation");
   let pressureElement = document.querySelector("#pressure");
   let convertPressure = Math.round(response.data.main.pressure * 0.75);
-  let dataElement = document.querySelector("#time");
-  let timeElement = document.querySelector("#date");
+  let dataElement = document.querySelector("#date");
+  let timeElement = document.querySelector("#time");
+
+  timeElement.innerHTML = formatTime(response.data.dt * 1000);
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   windElement.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
@@ -60,7 +63,6 @@ function showTemperature(response) {
   precipitationElement.innerHTML = `${response.data.weather[0].description}`;
   pressureElement.innerHTML = `Pressure: ${convertPressure} mmHg`;
   dataElement.innerHTML = formatDate(response.data.dt * 1000);
-  timeElement.innerHTML = formatTime(response.data.dt);
 }
 function search(city) {
   let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
@@ -96,9 +98,4 @@ form.addEventListener("submit", handleSubmit);
 // let celsiusLink = document.querySelector("#celsius-link");
 // celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
-search("New York");
-
-// let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
-// let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&units=metric&appid=${apiKey}`;
-
-// axios.get(apiUrl).then(showTemperature);
+search("Mercer Island");
