@@ -33,7 +33,6 @@ function formatTime(timestamp) {
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
-    console.log(timestamp);
   }
 
   let hours = date.getHours();
@@ -65,6 +64,7 @@ function showTemperature(response) {
   dataElement.innerHTML = formatDate(response.data.dt * 1000);
 }
 function search(city) {
+  console.log(city);
   let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
@@ -91,11 +91,24 @@ function displayCelsiusTemperature(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function handlePosition(position) {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(showTemperature);
+}
+function getCurrentPosition() {
+  navigator.geolocation.getCurrentPosition(handlePosition);
+}
+
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemperature);
+let currentCityButton = document.querySelector("#currentCity");
+currentCityButton.addEventListener("click", getCurrentPosition);
 
-search("Mercer Island");
+search("New York");
