@@ -44,7 +44,6 @@ function formatTime(timestamp) {
 }
 
 function showTemperature(response) {
-  console.log(response);
   let cityElement = document.querySelector("h1");
   let temperatureElement = document.querySelector("h2");
   let windElement = document.querySelector("#wind");
@@ -55,6 +54,7 @@ function showTemperature(response) {
   let dataElement = document.querySelector("#date");
   let timeElement = document.querySelector("#time");
 
+  celsiusTemperature = response.data.main.temp;
   timeElement.innerHTML = formatTime(response.data.dt * 1000);
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -75,27 +75,27 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-// function displayFahrenheitTemperature(event) {
-//   event.preventDefault();
-//   let temperatureElement = document.querySelector("#temperature");
-//   celsiusLink.classList.remove("active");
-//   fahrenheitLink.classList.add("active");
-//   let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
-//   temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
-// }
-// function displayCelsiusTemperature(event) {
-//   event.preventDefault();
-//   celsiusLink.classList.add("active");
-//   fahrenheitLink.classList.remove("active");
-//   let temperatureElement = document.querySelector("#temperature");
-//   temperatureElement.innerHTML = Math.round(celsiusTemperature);
-// }
-// let celsiusTemperature = null;
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("h2");
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+}
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("h2");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
-// let fahrenheitLink = document.querySelector("#fahrenheit-link");
-// fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-// let celsiusLink = document.querySelector("#celsius-link");
-// celsiusLink.addEventListener("click", displayCelsiusTemperature);
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Mercer Island");
