@@ -63,11 +63,17 @@ function showTemperature(response) {
   pressureElement.innerHTML = `Pressure: ${convertPressure} mmHg`;
   dataElement.innerHTML = formatDate(response.data.dt * 1000);
 }
+//function showForecast(response) {
+//  console.log(response);
+//}
+
 function search(city) {
-  console.log(city);
   let apiKey = "92bae01c9a19537ef478ef8ad568eb5c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
+
+  //apiUrl = `https://api.openweathermap.org/data/2.5/onecall?q=${city}&units=metric&exclude=daily&appid=${apiKey}`;
+  // axios.get(apiUrl).then(showForecast);
 }
 function handleSubmit(event) {
   event.preventDefault();
@@ -98,10 +104,11 @@ function handlePosition(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemperature);
 }
+
 function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
-
+getCurrentPosition();
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");

@@ -24,6 +24,14 @@ input,
 button {
   border-radius: 5px;
 }
+
+#currentCity {
+  margin-top: 10px;
+  padding-left: 90px;
+  text-align: center;
+  font-family: "monospace";
+}
+
 .container {
   background-image: linear-gradient(
     to top,
@@ -48,11 +56,7 @@ button {
 .card-text {
   text-align: center;
 }
-.firstCity {
-  margin-top: 0;
-  margin-bottom: 30px;
-  line-height: 1.5;
-}
+
 .dayCard {
   margin: 1px;
 }
