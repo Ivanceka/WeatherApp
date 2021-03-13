@@ -16,18 +16,16 @@
 
   <body>
     <div class="container">
-      <form class="row">
+      <form class="row" id="searchForm">
         <div class="searchCity">
-          <div id="searchForm">
-            <input
-              class="col-md-11"
-              id="city-input"
-              placeholder="Enter a city"
-              autocomplete="off"
-              autofocus="on"
-            />
-            <button class="col" type="submit">🔍</button>
-          </div>
+          <input
+            class="col-md-11"
+            id="city-input"
+            placeholder="Enter a city"
+            autocomplete="off"
+            autofocus="on"
+          />
+          <button class="col" type="submit">🔍</button>
         </div>
       </form>
       <form class="row">
@@ -63,22 +61,7 @@
           </ul>
         </div>
       </div>
-      <div class="row dayCard" id="forecast">
-        <div class="card" style="width: 8rem">
-          <img
-            src="Images/undraw_Raining_re_4b55.svg"
-            class="card-img-top"
-            alt="rain"
-          />
-          <div class="card-body">
-            <p class="card-text nextDateToday">
-              Today
-              <br />
-              18°C
-            </p>
-          </div>
-        </div>
-      </div>
+      <div class="row dayCard" id="forecast"></div>
     </div>
     <div class="container link">
       <small>

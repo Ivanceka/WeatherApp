@@ -44,7 +44,7 @@ button {
     #432c39 100%
   );
   width: 750px;
-  margin: 30px auto 0;
+  margin: 60px auto 0;
   padding: 40px;
   border-radius: 10px;
 }
@@ -52,6 +52,7 @@ button {
 .card {
   color: black;
   margin: auto;
+  background-color: transparent;
 }
 .card-text {
   text-align: center;
