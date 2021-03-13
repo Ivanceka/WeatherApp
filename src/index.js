@@ -133,6 +133,7 @@ function getCurrentPosition() {
   navigator.geolocation.getCurrentPosition(handlePosition);
 }
 getCurrentPosition();
+
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");

@@ -17,27 +17,24 @@
   <body>
     <div class="container">
       <form class="row" id="searchForm">
-        <div class="searchCity">
-          <input
-            class="col-md-11"
-            id="city-input"
-            placeholder="Enter a city"
-            autocomplete="off"
-            autofocus="on"
-          />
-          <button class="col" type="submit">🔍</button>
-        </div>
+        <input
+          class="col-9"
+          id="city-input"
+          placeholder="Enter a city"
+          autocomplete="off"
+          autofocus="on"
+        />
+        <span class="col-1" id="search">
+          <input type="submit" value="🔍" />
+        </span>
+        <button class="col-2" type="button" id="currentCity">
+          Current city
+        </button>
       </form>
-      <form class="row">
-        <div class="col-6">
-          <h1 id="city"></h1>
-        </div>
-        <div class="col-6" id="currentCity">
-          <button type="button" class="btn btn-outline-light btn-lg">
-            Current city
-          </button>
-        </div>
-      </form>
+      <div class="col-6">
+        <h1 id="city"></h1>
+      </div>
+
       <div class="row">
         <div class="col-6">
           <ul class="currentTime">

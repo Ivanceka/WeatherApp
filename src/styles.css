@@ -16,20 +16,15 @@ h1 {
 h2 {
   display: inline-block;
 }
-span {
-  position: relative;
-  top: -10px;
-}
 input,
 button {
   border-radius: 5px;
 }
 
-#currentCity {
-  margin-top: 10px;
-  padding-left: 90px;
-  text-align: center;
-  font-family: "monospace";
+#celsius-link,
+#fahrenheit-link {
+  position: relative;
+  top: -10px;
 }
 
 .container {
