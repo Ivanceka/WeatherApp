@@ -54,7 +54,7 @@ function showTemperature(response) {
   let timeElement = document.querySelector("#time");
 
   celsiusTemperature = response.data.main.temp;
-  timeElement.innerHTML = formatTime(response.data.dt * 1000);
+  timeElement.innerHTML = `Updated: ${formatTime(response.data.dt * 1000)}`;
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   windElement.innerHTML = `Wind: ${response.data.wind.speed} km/h`;
